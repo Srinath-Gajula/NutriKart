@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "266200189244",
+    "firebase_url": "https://snapgrocery-28b21-default-rtdb.firebaseio.com",
+    "project_id": "snapgrocery-28b21",
+    "storage_bucket": "snapgrocery-28b21.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:266200189244:android:1af65c0ba8964019f3f639",
+        "android_client_info": {
+          "package_name": "com.example.nutrikart"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAq8pmWqyLCtGAwi04Pt-S-3uOlN4BX_CE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:266200189244:android:b804934ed4f2c026f3f639",
+        "android_client_info": {
+          "package_name": "com.example.snapgrocery"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAq8pmWqyLCtGAwi04Pt-S-3uOlN4BX_CE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

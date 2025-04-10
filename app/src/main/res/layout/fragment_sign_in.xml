@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="1dp"
+    android:orientation="vertical"
+    android:background="@color/cream"
+    tools:context=".auth.SignInFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:layout_gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NutriKart"
+            android:textSize="37sp"
+            android:textColor="@color/gold"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="4"
+            android:textScaleX="1.1"
+            android:layout_marginBottom="8dp"
+            android:gravity="center"/>
+
+        <ImageView
+            android:id="@+id/NKIcon"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="24dp"
+            android:contentDescription="App Logo"
+            android:src="@drawable/main_logo" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Ready to order from NutriKart?"
+            android:textColor="@color/alwaysblack"
+            android:textSize="19sp"
+            android:layout_marginBottom="16dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp"
+            android:text="Log in or sign up"
+            android:textStyle="bold"
+            android:textColor="@color/alwaysblack"
+            android:textSize="16.90sp"
+            android:layout_marginBottom="12dp"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="58.50dp"
+            android:layout_marginHorizontal="26.00dp"
+            android:layout_marginTop="19.50dp"
+            app:boxCornerRadiusBottomEnd="16.90dp"
+            app:boxCornerRadiusBottomStart="16.90dp"
+            app:boxCornerRadiusTopEnd="16.90dp"
+            app:boxCornerRadiusTopStart="16.90dp"
+            app:endIconMode="clear_text">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etUserNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableStart="@android:drawable/ic_menu_call"
+                android:drawablePadding="9.10dp"
+                android:hint="Enter mobile number"
+                android:inputType="number" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnContinue"
+            android:layout_width="match_parent"
+            android:layout_height="58.50dp"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="26.00dp"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/green"
+            android:text="Continue"
+            android:textColor="#FFFFFF"
+            android:textAllCaps="false"
+            app:cornerRadius="10.48dp"
+            android:elevation="4dp"/>
+
+    <!-- Divider -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:text="Or continue with"
+        android:textSize="14sp"
+        android:textColor="@color/alwaysblack"
+        android:gravity="center"/>
+
+    <!-- Google & Email Sign-in Buttons -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="10dp"
+            android:background="@null"
+            android:scaleType="fitCenter"
+            android:src="@drawable/google_icon"
+            android:contentDescription="Google Login"/>
+
+<!--        <ImageButton-->
+<!--            android:layout_width="50dp"-->
+<!--            android:layout_height="50dp"-->
+<!--            android:layout_marginHorizontal="10dp"-->
+<!--            android:background="@null"-->
+<!--            android:scaleType="fitCenter"-->
+<!--            android:src="@drawable/baseline_email_24"-->
+<!--            android:contentDescription="Email Login"/>-->
+    </LinearLayout>
+
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_gravity="center"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_marginTop="16dp" />
+
+
+    </LinearLayout>
+
+
+</FrameLayout>
