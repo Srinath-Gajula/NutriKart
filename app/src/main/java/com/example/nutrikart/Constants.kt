@@ -3,27 +3,26 @@ package com.example.nutrikart
 object Constants {
 
     val allProductsCategory = arrayOf(
-
         "Fresh Vegetables",
         "Fresh Fruits",
-        "Milk & Coconut Water",
-        "Milk Products",
-        "Dry Fruits & Seeds",
-        "Snacks",
-        "Chips & More",
+        "Milk & Dairy",
+        "Coconut Water",
+        "Dry Fruits & Nuts",
+        "Snacks & Namkeen",
+        "Pulses & Grains",
+        "Atta & Rice",
         "Masala & Spices",
-        "Bakery, Eggs & More",
-        "Personal Care",
-        "Baby Care",
-        "Salt & Sugar",
-        "Pickles & Spreads",
-        "Tea & Coffee",
-        "Dal & Pulses",
+        "Biscuits & Bakery",
+        "Eggs",
+        "Tea, Coffee & Beverages",
+        "Pickles & Sauces",
+        "Ice Creams & Desserts",
+        "Salt, Sugar & Oil",
+        "Pooja Items",
         "Fresh Flowers",
-        "Pooja Needs",
-        "Pet Care"
-
-    )
+        "Personal Care",
+        "Pet Care",
+        )
 
     val allProductsCategoryIcon = arrayOf(
 
@@ -34,6 +33,7 @@ object Constants {
         R.drawable.bg_category,
         R.drawable.bg_category,
         R.drawable.bg_category,
+        R.drawable.chips,
         R.drawable.bg_category,
         R.drawable.bg_category,
         R.drawable.bg_category,

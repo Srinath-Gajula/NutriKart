@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.example.nutrikart.databinding.ProgressDialogBinding
 import com.google.firebase.auth.FirebaseAuth
+import java.util.UUID
 
 object Utils {
 
@@ -35,11 +36,16 @@ object Utils {
         return firebaseAuthInstance!!
     }
 
-//    fun getCurrentUserId() : String{
-//        return FirebaseAuth.getInstance().currentUser!!.uid
+    fun getCurrentUserId() : String{
+        return FirebaseAuth.getInstance().currentUser!!.uid
+    }
+
+//    fun getCurrentUserId(): String? {
+//        return firebaseAuthInstance?.currentUser?.uid ?: "No user logged in" // Handle null user scenario
 //    }
 
-    fun getCurrentUserId(): String? {
-        return firebaseAuthInstance?.currentUser?.uid ?: "No user logged in" // Handle null user scenario
-    }
+//    fun getCurrentUserId(): String {
+//        return firebaseAuthInstance?.currentUser?.uid ?: UUID.randomUUID().toString()
+//    }
+
 }

@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     id("com.google.gms.google-services")
+    id("kotlin-kapt")
 }
 
 android {
@@ -90,4 +91,28 @@ dependencies {
 
     //shimmer effect
     implementation("com.facebook.shimmer:shimmer:0.5.0@aar")
+
+    //room database
+//    val room_version = "2.6.1"
+//    implementation("androidx.room:room-runtime:$room_version")
+//    annotationProcessor("androidx.room:room-compiler:$room_version")
+//    // To use Kotlin annotation processing tool (kapt)
+//    kapt("androidx.room:room-compiler:$room_version")
+//    implementation("androidx.room:room-ktx:$room_version")
+//
+//    //glide
+//    implementation("com.github.bumptech.glide:glide:4.16.0")
+//    annotationProcessor ("com.github.bumptech.glide:compiler:4.15.0")
+
+
+    // Room database
+    val room_version = "2.6.1"
+    implementation("androidx.room:room-runtime:$room_version")
+    implementation("androidx.room:room-ktx:$room_version")
+    kapt("androidx.room:room-compiler:$room_version") // use kapt only
+
+    // Glide
+    implementation("com.github.bumptech.glide:glide:4.16.0")
+    kapt("com.github.bumptech.glide:compiler:4.16.0") // match version & use kaptz
+
 }

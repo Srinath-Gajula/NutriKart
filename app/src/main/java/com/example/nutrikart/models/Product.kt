@@ -13,5 +13,5 @@ data class Product(
     var productType : String ? = null,
     var itemCount : Int ? = null,
     var adminUid : String ? = null,
-    var productImageUris : ArrayList<String?>? = null,
+    var productImageUris : ArrayList<String?> ? = null,
 )

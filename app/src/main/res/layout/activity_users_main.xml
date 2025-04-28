@@ -23,7 +23,7 @@
 
     <!-- Bottom Sheet Layout -->
     <LinearLayout
-        android:visibility="visible"
+        android:visibility="gone"
         android:id="@+id/llCart"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -105,7 +105,8 @@
                 android:layout_marginStart="6.5dp"
                 android:layout_gravity="center"
                 android:background="@android:color/transparent"
-                android:src="@drawable/baseline_arrow_drop_up_24" />
+                android:src="@drawable/baseline_arrow_right_24" />
         </LinearLayout>
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

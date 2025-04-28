@@ -1,6 +1,7 @@
 package com.example.nutrikart.adapters
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.Filterable
@@ -17,8 +18,11 @@ import kotlin.let
 import kotlin.ranges.until
 import kotlin.toString
 
-class AdapterProduct(
-    ) : RecyclerView.Adapter<AdapterProduct.ProductViewHolder>() , Filterable  {
+class  AdapterProduct(
+    val onAddButtonClicked: (Product, ItemViewProductBinding) -> Unit,
+    val onIncrementButtonClicked: (Product, ItemViewProductBinding) -> Unit,
+    val onDecrementButtonClicked: (Product, ItemViewProductBinding) -> Unit
+) : RecyclerView.Adapter<AdapterProduct.ProductViewHolder>() , Filterable  {
     class ProductViewHolder (val binding : ItemViewProductBinding) : ViewHolder(binding.root)
 
     val diffUtil = object : DiffUtil.ItemCallback<Product>(){
@@ -63,6 +67,24 @@ class AdapterProduct(
             tvProductQuantity.text = quantity
 
             tvProductPrice.text = "₹" + product.productPrice
+
+            if (product.itemCount!! > 0){
+                tvProductCount.text = product.itemCount.toString()
+                tvAdd.visibility = View.GONE
+                llProductCount.visibility = View.VISIBLE
+            }
+
+            tvAdd.setOnClickListener {
+                onAddButtonClicked(product, this)
+
+            }
+
+            tvIncrementCount.setOnClickListener {
+                onIncrementButtonClicked(product , this)
+            }
+            tvDecrementCount.setOnClickListener {
+                onDecrementButtonClicked(product , this)
+            }
 
         }
 

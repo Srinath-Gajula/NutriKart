@@ -20,6 +20,7 @@ import com.example.nutrikart.databinding.FragmentOTPBinding
 import com.example.nutrikart.models.Users
 import com.example.nutrikart.viewmodels.AuthViewModel
 import kotlinx.coroutines.launch
+import kotlin.text.clear
 
 
 class OTPFragment : Fragment() {
@@ -46,23 +47,40 @@ class OTPFragment : Fragment() {
     }
 
     private fun onLoginButtonClicked() {
-        binding.btnLogin.setOnClickListener {
-            Utils.showDialog(requireContext(), "Signing you...")
-            val editTexts = arrayOf(binding.etOtp1, binding.etOtp2, binding.etOtp3, binding.etOtp4, binding.etOtp5, binding.etOtp6)
+        binding.btnLogin.setOnClickListener{
+            Utils.showDialog(requireContext(), message = "signing you...")
+            val editTexts = arrayOf(binding.etOtp1,binding.etOtp2,binding.etOtp3,binding.etOtp4,binding.etOtp5,binding.etOtp6)
             val otp = editTexts.joinToString("") { it.text.toString() }
 
             if (otp.length < editTexts.size){
-                Utils.showToast(requireContext(), "Please enter right otp")
-            }
-            else{
-                editTexts.forEach {it.text?.clear() ; it.clearFocus() }
+                Utils.showToast(requireContext(), message = "Please enter right otp")
+            }else{
+                editTexts.forEach { it.text?.clear(); it.clearFocus() }
                 verifyOtp(otp)
             }
         }
     }
 
+//    private fun verifyOtp(otp: String) {
+//        val user = Users(uid = Utils.getCurrentUserId(), userPhoneNumber = userNumber , userAddress = " ")
+//        viewModel.signInWithPhoneAuthCredential(otp, userNumber , user)
+//        lifecycleScope.launch {
+//            viewModel.isSignedInSuccessfully.collect{
+//                if(it){
+//                    Utils.hideDialog()
+//                    Utils.showToast(requireContext(), "Logged In...")
+//                    startActivity(Intent(requireActivity() , UsersMainActivity::class.java))
+//                    requireActivity().finish()
+//                }
+//            }
+//        }
+//
+//    }
+
     private fun verifyOtp(otp: String) {
-        val user = Users(uid = Utils.getCurrentUserId(), userPhoneNumber = userNumber )
+
+        val user = Users(uid = null, userPhoneNumber = userNumber , userAddress = " " )
+
         viewModel.signInWithPhoneAuthCredential(otp, userNumber, user)
 
         lifecycleScope.launch {
@@ -89,9 +107,7 @@ class OTPFragment : Fragment() {
                     }
                 }
             }
-
         }
-
     }
 
     private fun onBackButtonClicked() {

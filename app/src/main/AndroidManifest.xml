@@ -12,12 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NutriKart"
         tools:targetApi="31">
-
+        <activity
+            android:name=".OrderPlaceActivity"
+            android:exported="false" />
         <activity
             android:name=".activity.UsersMainActivity"
             android:exported="false" />
-
-
         <activity
             android:name=".activity.AuthMainActivity"
             android:exported="true">
@@ -27,7 +27,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>
