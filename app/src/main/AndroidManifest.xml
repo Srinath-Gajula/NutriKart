@@ -15,9 +15,14 @@
         <activity
             android:name=".OrderPlaceActivity"
             android:exported="false" />
+
+
         <activity
             android:name=".activity.UsersMainActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:configChanges="locale|orientation|screenSize"/>
+
+
         <activity
             android:name=".activity.AuthMainActivity"
             android:exported="true">

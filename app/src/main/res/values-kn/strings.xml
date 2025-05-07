@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ನ್ಯೂಟ್ರಿಕಾರ್ಟ್</string>
+    <string name="welcome_message">ನ್ಯೂಟ್ರಿಕಾರ್ಟ್ ಗೆ ಸ್ವಾಗತ</string>
+
+    <string name="cat_fresh_vegetables">ತಾಜಾ ತರಕಾರಿಗಳು</string>
+    <string name="cat_fresh_fruits">ತಾಜಾ ಹಣ್ಣುಗಳು</string>
+</resources>

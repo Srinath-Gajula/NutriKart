@@ -115,4 +115,12 @@ dependencies {
     implementation("com.github.bumptech.glide:glide:4.16.0")
     kapt("com.github.bumptech.glide:compiler:4.16.0") // match version & use kaptz
 
+    // phone pay
+    implementation("phonepe.intentsdk.android.release:IntentSDK:2.4.3")
+
+    //RETROFIT
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+
+
 }

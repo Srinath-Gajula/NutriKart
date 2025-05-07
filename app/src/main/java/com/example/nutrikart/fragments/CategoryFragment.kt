@@ -20,6 +20,7 @@ import com.example.nutrikart.models.Product
 import com.example.nutrikart.roomdb.CartProductTable
 import com.example.nutrikart.viewmodels.UserViewModel
 import kotlinx.coroutines.launch
+import kotlin.String
 
 class CategoryFragment : Fragment() {
 
@@ -271,6 +272,7 @@ class CategoryFragment : Fragment() {
             productImage = product.productImageUris?.get(0)!!,
             productCategory = product.productCategory,
             adminUid = product.adminUid,
+            productType = product.productType,
 
         )
 
@@ -279,7 +281,7 @@ class CategoryFragment : Fragment() {
     }
 
 //    onAttach(context: android.content.Context)
-
+ 
     override fun onAttach(context : Context){
         super.onAttach(context)
 

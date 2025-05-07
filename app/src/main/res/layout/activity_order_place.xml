@@ -18,7 +18,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:title="Checkout" />
-    
+
     <View
         android:id="@+id/view"
         android:layout_width="match_parent"
@@ -41,19 +41,123 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/view">
 
+
+
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/white_green">
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvProductsItems"
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="13.00dp"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                />
+                android:orientation="vertical"
+                android:padding="13dp">
+
+                <!-- Cart Items -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvProductsItems"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+                <!-- Recommended Section -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="You may also like"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:paddingTop="16dp" />
+
+                <LinearLayout
+                    android:id="@+id/recommendedSection"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="start">
+
+                    <!-- Recommended item card -->
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp">
+
+                        <ImageView
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:src="@drawable/apple_img"
+                            android:scaleType="centerCrop" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Recommended Item"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:paddingTop="4dp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
         </ScrollView>
+
+
+
+
+
+        <!--        <ScrollView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:background="@color/white_green">-->
+<!--            <androidx.recyclerview.widget.RecyclerView-->
+<!--                android:id="@+id/rvProductsItems"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_margin="13.00dp"-->
+<!--                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"-->
+<!--                />-->
+<!--        </ScrollView>-->
+
+
+
+
+<!--        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--            android:orientation="vertical"-->
+<!--            android:padding="8dp"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content">-->
+
+<!--            <ImageView-->
+<!--                android:id="@+id/productImage"-->
+<!--                android:layout_width="100dp"-->
+<!--                android:layout_height="100dp"-->
+<!--                android:scaleType="centerCrop"-->
+<!--                android:src="@drawable/apple_img" />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/productName"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Tomato"-->
+<!--                android:textStyle="bold"-->
+<!--                android:paddingTop="4dp"-->
+<!--                android:textSize="14sp"/>-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/productPrice"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="₹30"-->
+<!--                android:textSize="13sp"/>-->
+<!--        </LinearLayout>-->
+
+
     </androidx.cardview.widget.CardView>
+
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cvBillDetails"
@@ -224,7 +328,7 @@
             <ImageView
                 android:layout_width="@dimen/_30sdp"
                 android:layout_height="@dimen/_30sdp"
-                android:src="@drawable/apple_img"/>
+                android:src="@drawable/phonepe"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -237,15 +341,16 @@
 
         </LinearLayout>
 
-<!--        android:background="@drawable/bg_product_count"-->
-        
+        <!--        android:background="@drawable/bg_product_count"-->
+
         <LinearLayout
             android:id="@+id/btnNext"
             android:layout_width="match_parent"
             android:layout_height="45.50dp"
             android:layout_weight="0.5"
             android:gravity="center"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:background="@drawable/bg_add_button" >
 
             <TextView
                 android:id="@+id/tvAdd"
@@ -258,6 +363,7 @@
                 android:textStyle="bold" />
 
             <ImageButton
+
                 android:layout_width="19.50dp"
                 android:layout_height="19.50dp"
                 android:layout_gravity="center"

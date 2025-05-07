@@ -1,5 +1,6 @@
 package com.example.nutrikart.activity
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -12,6 +13,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.viewModels
 import com.example.nutrikart.CartListener
+import com.example.nutrikart.LocaleHelper
 import com.example.nutrikart.OrderPlaceActivity
 import com.example.nutrikart.R
 import com.example.nutrikart.adapters.AdapterCartProducts
@@ -53,6 +55,17 @@ class UsersMainActivity : AppCompatActivity() , CartListener{
         }
     }
 
+    //////////
+
+    override fun attachBaseContext(newBase: Context) {
+        val context: Context = LocaleHelper.setLocale(newBase, LocaleHelper.getLanguage(newBase))
+        super.attachBaseContext(context)
+    }
+
+
+    ////////////
+
+
     private fun onCartClicked() {
         binding.llItemCart.setOnClickListener {
             val bsCartProductsBinding = BsCartProductsBinding.inflate(LayoutInflater.from(this))
@@ -72,7 +85,7 @@ class UsersMainActivity : AppCompatActivity() , CartListener{
             bs.show()
 
         }
-
+ 
     }
 
     private fun getTotalItemCountInCart() {
@@ -106,6 +119,11 @@ class UsersMainActivity : AppCompatActivity() , CartListener{
         viewModel.fetchTotalCartItemCount().observe(this){
             viewModel.savingCartItemCount(it + itemCount)
         }
+    }
+
+    override fun hideCartLayout() {
+        binding.llCart.visibility = View.GONE
+        binding.tvNumberOfProductCount.text = "0"
     }
 
 

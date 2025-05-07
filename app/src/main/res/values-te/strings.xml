@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">న్యూట్రికార్ట్</string>
+    <string name="welcome_message">న్యూట్రికార్ట్ కు స్వాగతం</string>
+
+    <string name="cat_fresh_vegetables">తాజా కూరగాయలు</string>
+    <string name="cat_fresh_fruits">తాజా పండ్లు</string>
+</resources>

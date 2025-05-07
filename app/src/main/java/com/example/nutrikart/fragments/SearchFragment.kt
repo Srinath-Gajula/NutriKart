@@ -385,6 +385,7 @@ class SearchFragment : Fragment() {
             productImage = product.productImageUris?.get(0)!!,
             productCategory = product.productCategory,
             adminUid = product.adminUid,
+            productType = product.productType,
 
             )
 

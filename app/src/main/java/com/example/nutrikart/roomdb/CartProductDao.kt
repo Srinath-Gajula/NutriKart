@@ -29,7 +29,7 @@ import androidx.room.Update
 interface CartProductDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertCartProduct(products : CartProductTable)
+    fun insertCartProduct(products : CartProductTable) ///
 
     @Update
     fun updateCartProduct(products: CartProductTable)
@@ -38,7 +38,10 @@ interface CartProductDao {
     fun getAllCartProducts() : LiveData<List<CartProductTable>>
 
     @Query("DELETE FROM CartProductTable WHERE productId = :productId")
-    fun deleteCartProduct(productId : String)
+    fun deleteCartProduct(productId : String)  ///
+
+    @Query("DELETE FROM CartProductTable")
+    fun deleteCartProducts() ////
 
 
 }
