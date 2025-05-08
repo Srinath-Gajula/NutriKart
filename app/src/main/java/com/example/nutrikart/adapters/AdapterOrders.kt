@@ -1,5 +1,6 @@
 package com.example.nutrikart.adapters
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
@@ -11,7 +12,7 @@ import com.example.nutrikart.databinding.ItemViewOrdersBinding
 import com.example.nutrikart.models.OrderedItems
 import com.example.nutrikart.models.Orders
 
-class AdapterOrders : RecyclerView.Adapter<AdapterOrders.OrdersViewHolder>() {
+class AdapterOrders (private val context: Context) : RecyclerView.Adapter<AdapterOrders.OrdersViewHolder>() {
 
     class OrdersViewHolder(val binding : ItemViewOrdersBinding) : RecyclerView.ViewHolder(binding.root)
 

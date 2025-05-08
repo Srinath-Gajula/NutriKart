@@ -87,6 +87,32 @@ class UserViewModel(application: Application) : AndroidViewModel(application) {
     }
 
 
+    fun getAllOrders() : Flow<List<Orders>> = callbackFlow {
+        val db = FirebaseDatabase.getInstance().getReference("Admins").child("Orders").orderByChild("orderStatus")
+
+        val eventListener = object : ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val orderList = ArrayList<Orders>()
+                for (orders in snapshot.children){
+                    val order = orders.getValue(Orders::class.java)
+
+                    if (order?.orderingUserId == Utils.getCurrentUserId()){
+                        orderList.add(order)
+                    }
+                }
+                trySend(orderList)
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+
+        }
+        db.addValueEventListener(eventListener)
+        awaitClose{ db.removeEventListener(eventListener) }
+    }
+
+
 
 //    fun getUserAddress(callback : (String?) -> Unit){
 //        val db = FirebaseDatabase.getInstance().getReference("AllUsers").child("Users").child(Utils.getCurrentUserId()).child("userAddress")

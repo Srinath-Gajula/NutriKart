@@ -41,6 +41,9 @@ class OrderPlaceActivity : AppCompatActivity() {
     private lateinit var b2BPGRequest : B2BPGRequest
     private var cartListener : CartListener ? = null
 
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
