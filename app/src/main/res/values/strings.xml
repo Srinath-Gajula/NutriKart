@@ -1,16 +1,13 @@
 <resources>
     <string name="app_name">NutriKart</string>
     <!-- TODO: Remove or change this placeholder text -->
-<!--    <string name="hello_blank_fragment">Hello blank fragment</string>-->
+    <!--    <string name="hello_blank_fragment">Hello blank fragment</string>-->
 
-        <string name="welcome_message">Welcome to NutriKart</string>
-        <!-- Add more strings here -->
+    <string name="welcome_message">Welcome to NutriKart</string>
+    <!-- Add more strings here -->
 
     <string name="cat_fresh_vegetables">Fresh Vegetables</string>
     <string name="cat_fresh_fruits">Fresh Fruits</string>
-
-
-
 
 
     <string-array name="language_options">
@@ -19,5 +16,7 @@
         <item>ಕನ್ನಡ</item>
         <item>हिन्दी</item>
     </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

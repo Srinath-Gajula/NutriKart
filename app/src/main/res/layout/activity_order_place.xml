@@ -114,6 +114,44 @@
 
 
 
+    <!-- Recommendations Section -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvRecommendations"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="12dp"
+        android:layout_marginHorizontal="16dp"
+        android:elevation="4dp"
+        android:padding="12dp"
+        app:layout_constraintTop_toBottomOf="@id/cvCartProducts"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="9.00dp">
+
+            <TextView
+                android:id="@+id/tvRecommendationTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="You may also like"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvRecommendations"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:overScrollMode="never"
+                android:scrollbars="horizontal"
+                tools:listitem="@layout/item_recommended_product" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
 
 
@@ -138,6 +176,17 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+<!--    app:layout_constraintTop_toBottomOf="@id/cvCartProducts-->
 
 
     <androidx.cardview.widget.CardView
@@ -151,7 +200,7 @@
         android:layout_margin="7.80dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cvCartProducts"
+        app:layout_constraintTop_toBottomOf="@id/cvRecommendations"
         >
 
         <androidx.constraintlayout.widget.ConstraintLayout

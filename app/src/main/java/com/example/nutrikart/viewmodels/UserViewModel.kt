@@ -171,6 +171,25 @@ class UserViewModel(application: Application) : AndroidViewModel(application) {
 
     }
 
+    fun getOrderedProducts(orderId : String) : Flow<List<CartProductTable>> = callbackFlow{
+        val db = FirebaseDatabase.getInstance().getReference("Admins").child("Orders").child(orderId)
+        val eventListener = object : ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val order = snapshot.getValue(Orders::class.java)
+                trySend(order?.orderList!!)
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+
+        }
+        db.addValueEventListener(eventListener)
+        awaitClose{db.removeEventListener(eventListener)}
+
+
+    }
+
     fun updateItemCount(product: Product , itemCount: Int){
         FirebaseDatabase.getInstance().getReference("Admins").child("AllProducts/${product.productRandomId}").child("itemCount").setValue(itemCount)
         FirebaseDatabase.getInstance().getReference("Admins").child("ProductCategory/${product.productCategory}/${product.productRandomId}").child("itemCount").setValue(itemCount)

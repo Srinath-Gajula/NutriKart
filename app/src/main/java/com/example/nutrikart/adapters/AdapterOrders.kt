@@ -10,9 +10,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.nutrikart.R
 import com.example.nutrikart.databinding.ItemViewOrdersBinding
 import com.example.nutrikart.models.OrderedItems
-import com.example.nutrikart.models.Orders
 
-class AdapterOrders (private val context: Context) : RecyclerView.Adapter<AdapterOrders.OrdersViewHolder>() {
+class AdapterOrders (val context: Context, val onOrderItemViewClicked: (OrderedItems) -> Unit) : RecyclerView.Adapter<AdapterOrders.OrdersViewHolder>() {
 
     class OrdersViewHolder(val binding : ItemViewOrdersBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -53,7 +52,7 @@ class AdapterOrders (private val context: Context) : RecyclerView.Adapter<Adapte
         holder.binding.apply {
             tvOrderTitles.text = order.itemTitle
             tvOrderDate.text = order.itemDate
-            tvOrderAmount.text = order.itemPrice.toString()
+            tvOrderAmount.text = "₹${order.itemPrice.toString()}"
 
 //            when(order.itemStatus){
 //                0 -> {
@@ -95,6 +94,9 @@ class AdapterOrders (private val context: Context) : RecyclerView.Adapter<Adapte
                 }
             }
 
+        }
+        holder.itemView.setOnClickListener {
+            onOrderItemViewClicked(order)
         }
     }
 

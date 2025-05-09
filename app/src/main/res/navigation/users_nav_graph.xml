@@ -20,6 +20,7 @@
             app:destination="@id/categoryFragment" />
         <action
             android:id="@+id/action_homeFragment_to_profileFragment"
+
             app:destination="@id/profileFragment" />
     </fragment>
     <fragment
@@ -60,6 +61,7 @@
             app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_profileFragment_to_ordersFragment"
+
             app:destination="@id/ordersFragment" />
     </fragment>
     <fragment
@@ -72,5 +74,13 @@
             app:destination="@id/profileFragment"
             app:popUpTo="@id/profileFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_ordersFragment_to_orderDetailFragment"
+            app:destination="@id/orderDetailFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/orderDetailFragment"
+        android:name="com.example.nutrikart.fragments.OrderDetailFragment"
+        android:label="fragment_order_detail"
+        tools:layout="@layout/fragment_order_detail" />
 </navigation>

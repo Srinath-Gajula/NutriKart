@@ -57,12 +57,21 @@ class OrdersFragment : Fragment() {
                         orderedList.add(orderedItems)
 
                     }
-                    adapterOrders = AdapterOrders(requireContext())
+                    adapterOrders = AdapterOrders(requireContext() , ::onOrderItemViewClicked)
                     binding.rvOrders.adapter = adapterOrders
                     adapterOrders.differ.submitList(orderedList)
                 }
             }
         }
+
+    }
+
+    fun onOrderItemViewClicked(orderedItems: OrderedItems){
+        val bundle = Bundle()
+        bundle.putInt("status" , orderedItems.itemStatus!!)
+        bundle.putString("orderId" , orderedItems.orderId)
+
+        findNavController().navigate(R.id.action_ordersFragment_to_orderDetailFragment , bundle)
 
     }
 
