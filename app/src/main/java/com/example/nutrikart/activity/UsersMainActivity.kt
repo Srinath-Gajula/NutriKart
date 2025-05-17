@@ -335,8 +335,11 @@ import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
+import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.RecyclerView
 import com.example.nutrikart.CartListener
 import com.example.nutrikart.LocaleHelper
 import com.example.nutrikart.OrderPlaceActivity
@@ -351,6 +354,9 @@ import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.RequestBody.Companion.toRequestBody
 import org.json.JSONObject
 import java.io.IOException
+import com.example.nutrikart.R
+import org.json.JSONArray
+
 
 class UsersMainActivity : AppCompatActivity(), CartListener {
     private lateinit var binding: ActivityUsersMainBinding
@@ -359,13 +365,17 @@ class UsersMainActivity : AppCompatActivity(), CartListener {
     private lateinit var adapterCartProducts: AdapterCartProducts
     private val client = OkHttpClient()
 
+    private val recommendedItems = mutableListOf<String>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityUsersMainBinding.inflate(layoutInflater)
+
         setContentView(binding.root)
 
         observeCartProducts()
         observeTotalItemCountInCart()
+
 
         setupCartClickListener()
         setupNextButtonClickListener()
@@ -377,10 +387,7 @@ class UsersMainActivity : AppCompatActivity(), CartListener {
             Log.d("srinath", "Fetching recommendations")
 
             productList.forEach { item ->
-                // Pass only the product title
 
-
-                //fetchRecommendations(item.productTitle)
                 fetchRecommendations(item.productTitle ?: "Peas")
             }
         }
@@ -391,31 +398,65 @@ class UsersMainActivity : AppCompatActivity(), CartListener {
         val mediaType = "application/json; charset=utf-8".toMediaType()
         val body = json.toString().toRequestBody(mediaType)
 
-        val request = Request.Builder()
-            .url("http://192.168.10.217:5000/recommendations")
+        val request = Request.Builder()  //server connection code
+            .url("http://192.168.105.126:5001/recommendations") //change here ip only
             .post(body)
             .build()
 
-        Log.d("srinath", "Sending request for: $productTitle")
+        Log.d("srinath", "Sending request for: $productTitle")   //failed code to check in logcat
         client.newCall(request).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
                 e.printStackTrace()
             }
-
-            override fun onResponse(call: Call, response: Response) {
+            val recommendedTitles = mutableListOf<String>()
+            override fun onResponse(call: okhttp3.Call, response: okhttp3.Response) {  //to get recommendation
                 response.body?.string()?.let { responseBody ->
                     runOnUiThread {
                         Log.d("srinath", "Response: $responseBody")
                         // Update UI with the response if needed
+                        try {
+
+                            //val jsonArray = JSONArray(responseBody)
+                            val jsonObject = JSONObject(responseBody)
+                            val jsonArray = jsonObject.getJSONArray("recommendations")
+
+
+                            for (i in 0 until jsonArray.length()) {
+                                val productObject = jsonArray.getJSONObject(i)
+                               // val title = productObject.getString("productTitle")
+                                val title = productObject.getString("Name")
+
+                                recommendedTitles.add(title)
+                            }
+                            recommendedTitles.forEach { title ->
+                                if (!recommendedItems.contains(title)) {
+                                    recommendedItems.add(title)
+                                }
+                            }
+
+
+                            val recommendedArray: Array<String> = recommendedTitles.toTypedArray()
+                            Log.d("srinath", "Recommended titles: ${recommendedArray.joinToString()}")
+
+                        } catch (e: Exception) {
+                            Log.e("srinath", "Failed to parse JSON", e)
+                        }
                     }
                 }
             }
         })
     }
 
+
+
     private fun setupNextButtonClickListener() {
         binding.btnNext.setOnClickListener {
-            startActivity(Intent(this, OrderPlaceActivity::class.java))
+            //startActivity(Intent(this, OrderPlaceActivity::class.java))
+            //val recommendedItems = arrayListOf<String>("Chia Seeds", "Quinoa", "Vitamin D3") // replace with real list
+            val intent = Intent(this, OrderPlaceActivity::class.java)
+            val javaList: java.util.ArrayList<String?> = ArrayList(recommendedItems)
+            intent.putStringArrayListExtra("recommended_items", javaList)
+            startActivity(intent)
         }
     }
 

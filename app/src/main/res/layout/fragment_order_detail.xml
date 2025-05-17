@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:background="@color/white_green"
         app:layout_constraintStart_toStartOf="parent"
-        app:titleTextColor="@color/black"
+        app:titleTextColor="@color/alwaysblack"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:navigationIcon="@drawable/baseline_arrow_back_24"
@@ -130,9 +130,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
+                android:background="@color/white_green"
                 android:text="Ordered Items"
-                android:textColor="@color/black"
+                android:textColor="@color/alwaysblack"
                 android:textSize="18.20dp"
                 android:textStyle="bold" />
 

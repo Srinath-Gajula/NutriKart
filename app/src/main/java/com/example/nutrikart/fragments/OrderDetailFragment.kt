@@ -8,6 +8,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.example.nutrikart.R
 import com.example.nutrikart.adapters.AdapterCartProducts
 import com.example.nutrikart.adapters.AdapterOrders
@@ -33,8 +34,16 @@ class OrderDetailFragment : Fragment() {
         binding = FragmentOrderDetailBinding.inflate(layoutInflater)
         getValues()
         settingStatus()
+        onBackButtonClicked()
         lifecycleScope.launch { getOrderedProducts() }
         return binding.root
+    }
+
+
+    private fun onBackButtonClicked() {
+        binding.tbOrderDetailFragment.setNavigationOnClickListener {
+            findNavController().navigate(R.id.action_orderDetailFragment_to_ordersFragment)
+        }
     }
 
     suspend fun getOrderedProducts() {

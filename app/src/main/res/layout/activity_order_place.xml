@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white_green"
-        app:titleTextColor="@color/black"
+        app:titleTextColor="@color/alwaysblack"
         app:navigationIcon="@drawable/baseline_arrow_back_24"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -91,7 +91,7 @@
         android:id="@+id/cvCartProducts"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintHeight_percent="0.35"
+        app:layout_constraintHeight_percent="0.3"
         app:cardCornerRadius="13.00dp"
         app:cardUseCompatPadding="true"
         android:elevation="0dp"
@@ -132,13 +132,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="9.00dp">
+            android:padding="7.00dp">
 
             <TextView
                 android:id="@+id/tvRecommendationTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="You may also like"
+                android:text="Recommended Item"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:layout_marginBottom="8dp" />
@@ -152,34 +152,6 @@
                 tools:listitem="@layout/item_recommended_product" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -223,7 +195,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Bill Details"
-                    android:textColor="@color/black"
+                    android:textColor="@color/alwaysblack"
                     android:textSize="19.50sp"
                     android:textStyle="bold"
                     />
@@ -314,14 +286,14 @@
                         android:layout_weight="0.5"
                         android:textSize="18.20sp"
                         android:textStyle="bold"
-                        android:textColor="@color/black"
+                        android:textColor="@color/alwaysblack"
                         />
                     <TextView
                         android:id="@+id/tvGrandTotal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="287"
-                        android:textColor="@color/black"
+                        android:textColor="@color/alwaysblack"
                         android:layout_weight="0.5"
                         android:layout_marginEnd="13.00dp"
                         android:gravity="end"
@@ -389,7 +361,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="Place Order"
-                android:textColor="@color/black"
+                android:textColor="@color/alwaysblack"
                 android:textSize="16.90sp"
                 android:textStyle="bold" />
 

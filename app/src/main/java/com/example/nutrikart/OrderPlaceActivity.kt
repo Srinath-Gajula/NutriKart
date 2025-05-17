@@ -12,9 +12,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.nutrikart.Constants.apiEndPoint
 import com.example.nutrikart.activity.UsersMainActivity
 import com.example.nutrikart.adapters.AdapterCartProducts
+import com.example.nutrikart.adapters.RecommendationAdapter
 import com.example.nutrikart.databinding.ActivityOrderPlaceBinding
 import com.example.nutrikart.databinding.AddressLayoutBinding
 import com.example.nutrikart.models.Orders
@@ -32,7 +34,7 @@ import org.json.JSONObject
 import java.nio.charset.Charset
 import java.security.MessageDigest
 import kotlin.getValue
-
+private var recommended: ArrayList<String>? = null
 class OrderPlaceActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityOrderPlaceBinding
@@ -40,7 +42,8 @@ class OrderPlaceActivity : AppCompatActivity() {
     private lateinit var adapterCartProducts: AdapterCartProducts
     private lateinit var b2BPGRequest : B2BPGRequest
     private var cartListener : CartListener ? = null
-
+   // val recommendedItems = intent.getStringArrayListExtra("recommended_items")
+    //val recommended = intent.getStringArrayListExtra("recommended_items")
 
 
 
@@ -50,12 +53,90 @@ class OrderPlaceActivity : AppCompatActivity() {
         binding = ActivityOrderPlaceBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
+        recommended = intent.getStringArrayListExtra("recommended_items")
+
         getAllCartProducts()
         backToUserMainActivity()
         initializePhonePay()
         onPlaceOrderClicked()
 
+
+        setupRecommendedItems()
+
     }
+
+
+
+//    private fun setupRecommendedItems() {
+//        val dummyList = listOf("Quinoa", "Chia Seeds", "Flax Oil") // Replace with real data later
+//
+//        val layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+//        binding.rvRecommendations.layoutManager = layoutManager
+//
+//        val adapter = RecommendationAdapter(dummyList)
+//        binding.rvRecommendations.adapter = adapter
+//    }
+
+
+    private fun setupRecommendedItems() {
+        viewModel.getAll().observe(this) { cartProducts ->
+            //val recommended = mutableListOf<String>()
+            // val recommended = recommended
+
+          //   Simple rule: If product name contains "Protein", recommend "Whey" etc.
+//            for (product in cartProducts) {
+//                if (product.productTitle?.contains("protein", ignoreCase = true) == true) {
+//                    recommended.add("Whey Protein")
+//                    recommended.add("Shaker Bottle")
+//                } else if (product.productTitle?.contains("protein", ignoreCase = true) == true) {
+//                    recommended.add("Almond Milk")
+//                    recommended.add("Chia Seeds")
+//                }
+//            }
+//            if (recommended != null) {
+////            if (recommended.isEmpty()) {
+////                recommended.addAll(listOf("Chia Seeds", "Quinoa", "Vitamin D3")) // fallback
+////            }
+//
+//            val adapter = RecommendationAdapter(recommended.distinct())
+//            binding.rvRecommendations.layoutManager =
+//                LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+//            binding.rvRecommendations.adapter = adapter
+//
+//                }
+            if (recommended != null) {
+                // Safe to operate on recommended now
+
+                // Create a copy of the list (to prevent concurrency issues)
+                val recommendedItems = ArrayList(recommended)
+
+                // If recommendedItems is empty, add fallback items
+                if (recommendedItems.isEmpty()) {
+                    recommendedItems.addAll(listOf("Chia Seeds", "Quinoa", "Vitamin D3"))
+                }
+
+                // Use distinct() for the adapter
+                val adapter = RecommendationAdapter(recommendedItems.distinct())
+                binding.rvRecommendations.layoutManager =
+                    LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+                binding.rvRecommendations.adapter = adapter
+            } else {
+                // Handle the case where recommended is null
+                val fallbackItems = listOf("Chia Seeds", "Quinoa", "Vitamin D3") // fallback
+                val adapter = RecommendationAdapter(fallbackItems)
+                binding.rvRecommendations.layoutManager =
+                    LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+                binding.rvRecommendations.adapter = adapter
+            }
+
+
+
+
+
+        }
+    }
+
 
     private fun initializePhonePay() {
         val data = JSONObject()

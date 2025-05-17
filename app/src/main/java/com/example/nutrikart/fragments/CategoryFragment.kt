@@ -30,6 +30,7 @@ class CategoryFragment : Fragment() {
     private lateinit var adapterProduct: AdapterProduct
     private var cartListener : CartListener ? = null
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -46,11 +47,13 @@ class CategoryFragment : Fragment() {
         return binding.root
     }
 
+
     private fun onNavigationIconClick() {
         binding.tbSearchFragment.setNavigationOnClickListener{
             findNavController().navigate(R.id.action_categoryFragment_to_homeFragment)
         }
     }
+
 
     private fun onSearchMenuClick() {
         binding.tbSearchFragment.setOnMenuItemClickListener{menuItem->
@@ -64,6 +67,7 @@ class CategoryFragment : Fragment() {
 
         }
     }
+
 
     private fun fetchCategoryProduct() {
         lifecycleScope.launch {
@@ -86,14 +90,17 @@ class CategoryFragment : Fragment() {
 
     }
 
+
     private fun setToolBarTitle() {
         binding.tbSearchFragment.title = category
     }
+
 
     private fun getProductCategory() {
         val bundle = arguments
         category = bundle?.getString("category")
     }
+
 
     private fun onAddButtonClicked(product: Product , productBinding: ItemViewProductBinding) {
         productBinding.tvAdd.visibility = View.GONE
@@ -116,34 +123,7 @@ class CategoryFragment : Fragment() {
             viewModel.updateItemCount(product , itemCount)
         }
 
-
     }
-
-
-
-//    private fun onAddButtonClicked(product: Product , productBinding: ItemViewProductBinding){
-//        productBinding.tvAdd.visibility = View.GONE
-//        productBinding.llProductCount.visibility = View.VISIBLE
-//
-//        //step 1
-//        var itemCount = productBinding.tvProductCount.text.toString().toInt()
-//        itemCount++
-//
-//        productBinding.tvProductCount.text = itemCount.toString()
-//
-//        cartListener?.showCartLayout(1)
-//
-//
-//        //step 2 item count value storing in database
-//        product.itemCount = itemCount
-//        lifecycleScope.launch {
-//            cartListener?.savingCartItemCount(1)
-//            saveProductInRoomDb(product)
-//            viewModel.updateItemCount(product , itemCount)
-//        }
-//
-//    }
-
 
 
     private fun onIncrementButtonClicked(product: Product, productBinding: ItemViewProductBinding){
@@ -170,33 +150,6 @@ class CategoryFragment : Fragment() {
 
 
     }
-
-
-//    private fun onIncrementButtonClicked(product: Product, productBinding: ItemViewProductBinding){
-//
-//        var itemCountInc = productBinding.tvProductCount.text.toString().toInt()
-//        itemCountInc++
-//
-//        if (product.productStock!! + 1 > itemCountInc){
-//            productBinding.tvProductCount.text = itemCountInc.toString()
-//
-//            cartListener?.showCartLayout(1)
-//
-//            //step 2
-//            product.itemCount = itemCountInc
-//            lifecycleScope.launch {
-//                cartListener?.savingCartItemCount(1)
-//                saveProductInRoomDb(product)
-//                viewModel.updateItemCount(product , itemCountInc)
-//            }
-//        }
-//
-//        else{
-//            Utils.showToast(requireContext() , "Can't add more item of this")
-//        }
-//
-//    }
-
 
 
     fun onDecrementButtonClicked(product: Product , productBinding: ItemViewProductBinding){
@@ -230,37 +183,6 @@ class CategoryFragment : Fragment() {
     }
 
 
-
-
-//    private fun onDecrementButtonClicked(product: Product , productBinding: ItemViewProductBinding){
-//
-//        var itemCountDec = productBinding.tvProductCount.text.toString().toInt()
-//        itemCountDec--
-//
-//        product.itemCount = itemCountDec
-//        lifecycleScope.launch {
-//            cartListener?.savingCartItemCount(-1)
-//            saveProductInRoomDb(product)
-//            viewModel.updateItemCount(product , itemCountDec)
-//        }
-//
-//        if (itemCountDec > 0) {
-//            productBinding.tvProductCount.text = itemCountDec.toString()
-//        }
-//        else{
-//            lifecycleScope.launch { viewModel.deleteCartProduct(product.productRandomId!!) }
-//            Log.d("VV" , product.productRandomId!!)
-//            productBinding.tvAdd.visibility = View.VISIBLE
-//            productBinding.llProductCount.visibility = View.GONE
-//            productBinding.tvProductCount.text = "0"
-//        }
-//
-//        cartListener?.showCartLayout(-1)
-//
-//        //step 2
-//
-//    }
-
     private fun saveProductInRoomDb(product: Product){
         val cartProduct = CartProductTable(
             productId = product.productRandomId!!,
@@ -280,7 +202,6 @@ class CategoryFragment : Fragment() {
 
     }
 
-//    onAttach(context: android.content.Context)
  
     override fun onAttach(context : Context){
         super.onAttach(context)

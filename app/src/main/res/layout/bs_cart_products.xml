@@ -103,7 +103,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Next"
-                    android:textColor="@color/black"
+                    android:textColor="@color/alwaysblack"
                     android:textSize="16.9sp"
                     android:textStyle="bold" />
 
