@@ -38,6 +38,7 @@ It includes a smart nutrition-based recommendation system that suggests fruits a
 
 👥 User Roles
 User App: Browse, add to cart, checkout, receive nutrition suggestions
+
 Admin App: Add/update products, view orders, manage stock
 
 
