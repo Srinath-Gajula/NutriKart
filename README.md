@@ -36,6 +36,8 @@ It includes a smart nutrition-based recommendation system that suggests fruits a
 3. Connect a device or start an emulator
 4. Run the app
 
+---
+
 👥 User Roles
 User App: Browse, add to cart, checkout, receive nutrition suggestions
 
